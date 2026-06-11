@@ -1,0 +1,454 @@
+/* ==========================================================
+   Hero — dark canvas with intelligence engine diagram
+   ========================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 56px 0 80px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+}
+
+/* ── Background layers ──────────────────────────────── */
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 48%,
+    transparent 18%,
+    rgba(7, 25, 45, 0.38) 52%,
+    rgba(7, 25, 45, 0.88) 100%
+  );
+}
+
+.cursor {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(65, 199, 255, 0.35);
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: opacity 400ms;
+  opacity: 0;
+}
+
+/* ── Body layout ────────────────────────────────────── */
+
+.body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 40px;
+}
+
+/* ── Copy block ─────────────────────────────────────── */
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+}
+
+.pill {
+  margin-bottom: 28px;
+}
+
+.pillNew {
+  background: var(--g-brand);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.sub {
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 32px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ── Diagram panel ──────────────────────────────────── */
+
+.diagram {
+  width: 100%;
+  background: rgba(8, 28, 56, 0.72);
+  border: 1px solid rgba(65, 199, 255, 0.14);
+  border-radius: 18px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-dark);
+  overflow: hidden;
+  animation: panelIn 0.90s 0.70s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Top / bottom bars */
+.diagramTopBar,
+.diagramBottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 9px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: rgba(255, 255, 255, 0.42);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.diagramTopBar  { border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.diagramBottomBar { border-top: 1px solid rgba(255, 255, 255, 0.07); color: rgba(255, 255, 255, 0.38); }
+
+.barDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(65, 199, 255, 0.35);
+  flex-shrink: 0;
+}
+
+/* ── Flow grid ──────────────────────────────────────── */
+
+.flow {
+  display: grid;
+  grid-template-columns: 150px 56px 1fr 56px 186px;
+  align-items: center;
+  padding: 24px 20px 20px;
+  min-height: 260px;
+}
+
+/* ── Input column ───────────────────────────────────── */
+
+.inputCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.docCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 9px 11px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  animation: rowIn 0.5s var(--row-delay, 0.8s) cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  opacity: 0;
+}
+
+.docCard:nth-child(1) { --row-delay: 0.80s; }
+.docCard:nth-child(2) { --row-delay: 0.96s; }
+.docCard:nth-child(3) { --row-delay: 1.12s; }
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.docLines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.docLines span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.docLabel {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.colTag {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.36);
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ── Connector SVGs ─────────────────────────────────── */
+
+.connector {
+  width: 100%;
+  height: 220px;
+  overflow: visible;
+}
+
+/* ── Engine hub ─────────────────────────────────────── */
+
+.engineWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.engineTag {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  color: rgba(65, 199, 255, 0.75);
+  text-transform: uppercase;
+}
+
+.engineHub {
+  position: relative;
+  width: 320px;
+  height: 240px;
+}
+
+.engineSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.engineCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, rgba(65, 199, 255, 0.18) 0%, rgba(7, 25, 45, 0.95) 60%);
+  border: 1.5px solid rgba(65, 199, 255, 0.38);
+  box-shadow:
+    0 0 28px rgba(65, 199, 255, 0.18),
+    0 0 56px rgba(65, 199, 255, 0.08),
+    inset 0 0 20px rgba(65, 199, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 3.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.engineLogo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 28px rgba(65,199,255,0.18), 0 0 56px rgba(65,199,255,0.08), inset 0 0 20px rgba(65,199,255,0.06); }
+  50%       { box-shadow: 0 0 40px rgba(65,199,255,0.32), 0 0 80px rgba(65,199,255,0.14), inset 0 0 28px rgba(65,199,255,0.10); }
+}
+
+/* ── Engine nodes ───────────────────────────────────── */
+
+.node {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  width: 144px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(65, 199, 255, 0.16);
+  border-radius: 8px;
+  padding: 7px 11px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.node svg { opacity: 0.65; flex-shrink: 0; margin-top: 1px; }
+
+.nodeTL { top: 0; left: 0; }
+.nodeTR { top: 0; right: 0; }
+.nodeBL { bottom: 0; left: 0; }
+.nodeBR { bottom: 0; right: 0; }
+
+/* ── Output column ──────────────────────────────────── */
+
+.outputCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.outputCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 9px 12px;
+  animation: rowIn 0.5s var(--out-delay, 0.9s) cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  opacity: 0;
+}
+
+.outputCard:nth-child(1) { --out-delay: 0.90s; }
+.outputCard:nth-child(2) { --out-delay: 1.05s; }
+.outputCard:nth-child(3) { --out-delay: 1.20s; }
+.outputCard:nth-child(4) { --out-delay: 1.35s; }
+
+.outputIcon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outputLabel {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.2;
+}
+
+.outputSub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.32);
+  margin-top: 2px;
+}
+
+/* ── Scroll cue ─────────────────────────────────────── */
+
+.scrollCue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.scrollLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.24);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, rgba(65, 199, 255, 0.45), rgba(65, 199, 255, 0));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+  50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .body   { padding: 0 24px; gap: 28px; }
+  .flow   { grid-template-columns: 140px 48px 1fr 48px 170px; }
+  .engineHub { width: 280px; height: 220px; }
+}
+
+@media (max-width: 900px) {
+  .hero   { cursor: auto; padding: 100px 0 80px; }
+  .cursor { display: none; }
+  .body   { padding: 0 20px; }
+  .flow   { grid-template-columns: 1fr; gap: 16px; }
+  .connector { display: none; }
+  .engineWrap { width: 100%; }
+  .engineHub  { width: 100%; max-width: 340px; }
+  .diagramTopBar, .diagramBottomBar { display: none; }
+}
+
+@media (max-width: 480px) {
+  .engineHub { height: 210px; }
+  .node      { width: 120px; font-size: 8.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollLine, .engineCenter { animation: none; }
+  .diagram { animation: none; opacity: 1; }
+  .docCard, .outputCard { animation: none; opacity: 1; }
+}

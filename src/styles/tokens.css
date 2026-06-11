@@ -1,0 +1,108 @@
+/* ==========================================================
+   PO2PAY Design Tokens
+   Single source of truth — imported once in globals.css
+   ========================================================== */
+
+:root {
+  /* ── Brand colours ──────────────────────────────────────── */
+  --c-brand-50:  #e8f8ff;
+  --c-brand-100: #c3edff;
+  --c-brand-200: #8fdeff;
+  --c-brand-300: #41c7ff;
+  --c-brand-400: #00afed;
+  --c-brand-500: #1488b8;
+  --c-brand-600: #0e6b91;
+  --c-brand-700: #0a506d;
+  --c-brand-800: #07354a;
+  --c-brand-900: #041e2b;
+
+  /* ── Neutral scale ──────────────────────────────────────── */
+  --c-neutral-0:   #ffffff;
+  --c-neutral-50:  #f7f9fc;
+  --c-neutral-100: #eef1f6;
+  --c-neutral-200: #dde3ed;
+  --c-neutral-300: #c2cad8;
+  --c-neutral-400: #9aa3b5;
+  --c-neutral-500: #6b7591;
+  --c-neutral-600: #4a5368;
+  --c-neutral-700: #313a4f;
+  --c-neutral-800: #1e2537;
+  --c-neutral-900: #0d1220;
+  --c-neutral-950: #070c17;
+
+  /* ── Semantic surface colours ───────────────────────────── */
+  --c-surface-dark:      #070e1c;
+  --c-surface-dark-card: rgba(8, 28, 56, 0.72);
+  --c-surface-light:     #ffffff;
+  --c-surface-muted:     #f7f9fc;
+
+  /* ── Gradients ──────────────────────────────────────────── */
+  --g-brand:   linear-gradient(135deg, #1488b8 0%, #41c7ff 100%);
+  --g-vibrant: linear-gradient(135deg, #0d8fd4 0%, #41c7ff 60%, #00e5c8 100%);
+  --g-dark-radial: radial-gradient(ellipse 90% 80% at 50% 48%, transparent 18%, rgba(7,25,45,0.38) 52%, rgba(7,25,45,0.88) 100%);
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Type scale */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+
+  /* ── Spacing ────────────────────────────────────────────── */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+  --sp-32: 128px;
+
+  /* ── Radius ─────────────────────────────────────────────── */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-full: 9999px;
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-xl:   0 24px 72px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.10);
+  --shadow-dark: 0 24px 72px rgba(0,0,0,0.52), inset 0 0 0 1px rgba(65,199,255,0.05);
+  --shadow-glow: 0 0 32px rgba(65,199,255,0.20), 0 0 64px rgba(65,199,255,0.10);
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --ease-out:   cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in:    cubic-bezier(0.4, 0, 1, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 700ms;
+
+  /* ── Z-index scale ──────────────────────────────────────── */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-header:  200;
+  --z-modal:   300;
+  --z-cursor:  400;
+}

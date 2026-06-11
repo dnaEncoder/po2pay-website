@@ -1,0 +1,256 @@
+.section {
+  background: var(--c-surface-dark);
+  padding: var(--sp-24) 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.glow {
+  position: absolute;
+  top: -160px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(33,107,255,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -120px;
+  right: -80px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: var(--sp-16);
+  align-items: center;
+}
+
+/* Left content */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  max-width: 540px;
+}
+
+.accent {
+  background: var(--g-vibrant);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  max-width: 460px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.stats {
+  display: flex;
+  gap: var(--sp-8);
+  padding-top: var(--sp-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.stat {}
+
+.statVal {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  background: var(--g-vibrant);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.38);
+  letter-spacing: 0.02em;
+}
+
+/* Mockup */
+
+.mockup {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+.mockHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.mockDots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.mockDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mockUrl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.mockBody {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mockRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mockLabel {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.38);
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.mockBar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.mockFill {
+  height: 100%;
+  width: var(--w);
+  background: linear-gradient(90deg, var(--c-brand-400), var(--c-brand-300));
+  border-radius: 99px;
+  transition: width 1.2s ease;
+}
+
+.mockBadgeGreen {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #34D399;
+  font-weight: 700;
+  width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.mockBadgePurple {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #A78BFA;
+  font-weight: 700;
+  width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.mockBadgeAmber {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #FCD34D;
+  font-weight: 700;
+  width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.mockDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mockCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mockCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--r-md);
+  padding: 14px 12px;
+}
+
+.mockCardVal {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: 800;
+  background: var(--g-vibrant);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+
+.mockCardLabel {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.30);
+  line-height: 1.4;
+}
+
+@media (max-width: 960px) {
+  .container { grid-template-columns: 1fr; }
+  .mockup    { max-width: 500px; }
+}
+
+@media (max-width: 600px) {
+  .stats { gap: var(--sp-6); }
+  .mockCards { grid-template-columns: repeat(3, 1fr); }
+}

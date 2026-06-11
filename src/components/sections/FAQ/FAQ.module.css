@@ -1,0 +1,117 @@
+.section {
+  background: #fff;
+  padding: var(--sp-24) 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-14);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-4);
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--c-neutral-900);
+}
+
+.sub {
+  font-size: var(--text-base);
+  color: var(--c-neutral-500);
+  max-width: 440px;
+  line-height: 1.6;
+}
+
+/* FAQ list */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--c-neutral-100);
+}
+
+.item {
+  border-bottom: 1px solid var(--c-neutral-100);
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-6) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.q {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--c-neutral-800);
+  line-height: 1.5;
+  flex: 1;
+  transition: color var(--duration-200) var(--ease-standard);
+}
+
+.itemOpen .q {
+  color: var(--c-brand-600);
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--c-neutral-400);
+  transition: transform var(--duration-300) var(--ease-standard),
+              color var(--duration-200) var(--ease-standard);
+  display: flex;
+}
+
+.itemOpen .icon {
+  transform: rotate(180deg);
+  color: var(--c-brand-500);
+}
+
+/* CSS grid collapse */
+
+.answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-400) var(--ease-standard);
+}
+
+.itemOpen .answer {
+  grid-template-rows: 1fr;
+}
+
+.answerInner {
+  overflow: hidden;
+}
+
+.answerInner p {
+  font-size: var(--text-base);
+  color: var(--c-neutral-600);
+  line-height: 1.75;
+  padding-bottom: var(--sp-6);
+  max-width: 720px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .q { font-size: var(--text-sm); }
+  .answerInner p { font-size: var(--text-sm); }
+}

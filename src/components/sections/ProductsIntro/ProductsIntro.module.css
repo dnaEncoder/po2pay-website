@@ -1,0 +1,337 @@
+.section {
+  position: relative;
+  background: linear-gradient(180deg, var(--c-neutral-950) 0%, #0a1224 50%, var(--c-neutral-950) 100%);
+  padding: var(--sp-24) 0;
+  overflow: hidden;
+}
+
+.section::before,
+.section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.section::before {
+  left: -160px;
+  background: rgba(65, 199, 255, 0.16);
+}
+
+.section::after {
+  right: -160px;
+  background: rgba(109, 94, 248, 0.16);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+.head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--sp-16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.heading { color: #fff; }
+
+.accent {
+  font-family: var(--font-sans);
+  font-style: italic;
+  color: rgba(125, 211, 252, 0.90);
+}
+
+.desc {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.65;
+}
+
+/* ── Connector ──────────────────────────────────────── */
+
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.connectorPill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--r-full);
+  padding: 8px 18px;
+}
+
+.connectorLine {
+  width: 1px;
+  height: 28px;
+  margin-top: 2px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent);
+}
+
+/* ── Product pair ───────────────────────────────────── */
+
+.pair {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(65, 199, 255, 0.18);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  display: flex;
+  gap: 40px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(65, 199, 255, 0.35);
+}
+
+.cardContract {
+  border-color: rgba(109, 94, 248, 0.22);
+}
+
+.cardContract:hover {
+  border-color: rgba(109, 94, 248, 0.40);
+}
+
+/* ── Card left (identity) ───────────────────────────── */
+
+.cardLeft {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  background: var(--g-vibrant);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconContract {
+  background: linear-gradient(135deg, #6D5EF8 0%, #9B8CFC 100%);
+}
+
+.name {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.cardDesc {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: rgba(65, 199, 255, 0.80);
+  text-decoration: none;
+  margin-top: auto;
+  transition: color var(--duration-fast), gap var(--duration-fast);
+}
+
+.link:hover { color: rgba(65, 199, 255, 1); }
+
+.cardContract .link {
+  color: rgba(155, 140, 252, 0.85);
+}
+
+.cardContract .link:hover {
+  color: rgba(155, 140, 252, 1);
+}
+
+/* ── Card right (workflow) ──────────────────────────── */
+
+.cardRight {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 40px;
+}
+
+.workflow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  max-width: 130px;
+}
+
+.stepIcon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, rgba(65, 199, 255, 0.18), rgba(65, 199, 255, 0.05));
+  border: 1px solid rgba(65, 199, 255, 0.40);
+  color: rgba(65, 199, 255, 0.95);
+  box-shadow: 0 0 18px rgba(65, 199, 255, 0.35), inset 0 0 12px rgba(65, 199, 255, 0.12);
+}
+
+.stepIcon svg {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 6px rgba(65, 199, 255, 0.65));
+}
+
+.cardContract .stepIcon {
+  background: radial-gradient(circle at 50% 40%, rgba(109, 94, 248, 0.20), rgba(109, 94, 248, 0.06));
+  border-color: rgba(109, 94, 248, 0.45);
+  color: rgba(155, 140, 252, 0.95);
+  box-shadow: 0 0 18px rgba(109, 94, 248, 0.35), inset 0 0 12px rgba(109, 94, 248, 0.14);
+}
+
+.cardContract .stepIcon svg {
+  filter: drop-shadow(0 0 6px rgba(155, 140, 252, 0.65));
+}
+
+.stepLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.4;
+}
+
+.stepArrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: rgba(65, 199, 255, 0.40);
+}
+
+.cardContract .stepArrow {
+  color: rgba(155, 140, 252, 0.40);
+}
+
+/* ── Feature pills ───────────────────────────────────── */
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.60);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-full);
+  padding: 7px 14px;
+}
+
+.pillIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(65, 199, 255, 0.85);
+  flex-shrink: 0;
+}
+
+.cardContract .pillIcon {
+  color: rgba(155, 140, 252, 0.90);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .card {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .cardLeft {
+    flex: none;
+  }
+
+  .cardRight {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 0;
+    padding-top: 24px;
+  }
+
+  .workflow {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px 8px;
+  }
+
+  .stepArrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .card { padding: 24px; }
+  .workflow { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .step { flex-direction: row; max-width: none; text-align: left; gap: 12px; }
+  .stepArrow { display: none; }
+}
