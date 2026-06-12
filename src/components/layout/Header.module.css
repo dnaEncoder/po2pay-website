@@ -265,6 +265,69 @@
   flex-shrink: 0;
 }
 
+/* ── Sign in dropdown ─────────────────────────────────── */
+
+.signInWrap {
+  position: relative;
+}
+
+.signInTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.signInMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 240px;
+  background: #fff;
+  border: 1px solid var(--c-neutral-100);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-overlay);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: megaIn 180ms var(--ease-out) both;
+}
+
+.signInLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--r-md);
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.signInLink:hover {
+  background: var(--c-neutral-50);
+}
+
+/* ── Mobile sign-in (drawer) ──────────────────────────── */
+
+.mobileSignIn {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.mobileSignInLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--c-neutral-400);
+  margin: 16px 0 8px;
+  padding-left: 4px;
+}
+
 /* ── Hamburger (mobile) ───────────────────────────────── */
 
 .hamburger {
@@ -358,6 +421,10 @@
   }
 
   .hamburger {
+    display: flex;
+  }
+
+  .mobileSignIn {
     display: flex;
   }
 }

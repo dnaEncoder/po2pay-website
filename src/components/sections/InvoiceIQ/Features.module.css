@@ -547,9 +547,21 @@
 
 @media (max-width: 900px) {
   .sticky { height: auto; position: static; }
-  .cols   { grid-template-columns: 1fr; height: auto; gap: var(--sp-6); }
-  .right  { position: static; height: 400px; }
-  .panel  { position: static; width: 100%; }
+  .cols   { display: flex; flex-direction: column; height: auto; gap: var(--sp-6); }
+  .left   { padding: 0; }
+  .right  { position: static; height: auto; }
+
+  .panel {
+    position: static;
+    width: 100%;
+    padding: var(--sp-4) 0;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+
+  .panel:not(:first-child) { display: none; }
+
   .section { height: auto; }
 }
 

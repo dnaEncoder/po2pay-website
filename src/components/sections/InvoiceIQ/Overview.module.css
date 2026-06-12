@@ -315,4 +315,35 @@
 @media (max-width: 768px) {
   .head   { grid-template-columns: 1fr; }
   .card_tl, .card_br { display: none; }
+  .visual { min-height: auto; }
+}
+
+@media (max-width: 600px) {
+  .mockBody { flex-direction: column; }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--c-neutral-100);
+    padding: 12px;
+  }
+
+  .sidebarNav { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+
+  .row {
+    grid-template-columns: 12px 1fr auto;
+    gap: 6px;
+    padding: 10px 12px;
+  }
+
+  .rowId { display: none; }
+
+  .rowVendor, .rowVal {
+    font-size: var(--text-xs);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contentHeader { padding: 10px 12px; }
 }

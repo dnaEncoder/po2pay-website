@@ -53,9 +53,25 @@ const MEGA_CAPABILITIES = [
   },
 ]
 
+const SIGN_IN_LINKS = [
+  {
+    title: 'ContractIQ',
+    desc: 'PO & contract workspace',
+    href: 'https://po.po2pay.com/',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h6l4 4v8H3V2z" stroke="currentColor" strokeWidth="1.3"/><path d="M9 2v4h4" stroke="currentColor" strokeWidth="1.3"/></svg>,
+  },
+  {
+    title: 'InvoiceIQ',
+    desc: 'Invoice workspace',
+    href: 'https://inv.po2pay.com/',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.3"/><path d="M5 6h6M5 9h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/></svg>,
+  },
+]
+
 export default function Header() {
   const [scrolled, setScrolled]   = useState(false)
   const [megaOpen, setMegaOpen]   = useState(false)
+  const [signInOpen, setSignInOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
@@ -71,6 +87,14 @@ export default function Header() {
     document.addEventListener('click', close)
     return () => document.removeEventListener('click', close)
   }, [megaOpen])
+
+  // Close sign-in dropdown on outside click
+  useEffect(() => {
+    if (!signInOpen) return
+    const close = () => setSignInOpen(false)
+    document.addEventListener('click', close)
+    return () => document.removeEventListener('click', close)
+  }, [signInOpen])
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`} id="siteHeader">
@@ -150,11 +174,51 @@ export default function Header() {
         {NAV_LINKS.map(link => (
           <a key={link.label} href={link.href} className={styles.navItem}>{link.label}</a>
         ))}
+
+        {/* Sign in links (mobile drawer) */}
+        <div className={styles.mobileSignIn}>
+          <p className={styles.mobileSignInLabel}>Sign in</p>
+          {SIGN_IN_LINKS.map(item => (
+            <a key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.signInLink}>
+              <span className={styles.megaIcon}>{item.icon}</span>
+              <span>
+                <span className={styles.megaLinkTitle}>{item.title}</span>
+                <span className={styles.megaLinkDesc}>{item.desc}</span>
+              </span>
+            </a>
+          ))}
+        </div>
       </nav>
 
       {/* Right actions */}
       <div className={styles.actions}>
-        {/* <a href="#" className="btn btn-ghost btn-sm">Sign in</a> */}
+        <div className={styles.signInWrap}>
+          <button
+            className={`btn btn-ghost btn-sm ${styles.signInTrigger}`}
+            onClick={(e) => { e.stopPropagation(); setSignInOpen(v => !v) }}
+            aria-expanded={signInOpen}
+          >
+            Sign in
+            <svg className={`${styles.chev} ${signInOpen ? styles.chevOpen : ''}`} width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
+
+          {signInOpen && (
+            <div className={styles.signInMenu} onClick={e => e.stopPropagation()}>
+              {SIGN_IN_LINKS.map(item => (
+                <a key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.signInLink}>
+                  <span className={styles.megaIcon}>{item.icon}</span>
+                  <span>
+                    <span className={styles.megaLinkTitle}>{item.title}</span>
+                    <span className={styles.megaLinkDesc}>{item.desc}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
         <a href="#" className="btn btn-primary btn-sm">Book a demo</a>
       </div>
 

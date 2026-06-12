@@ -25,7 +25,7 @@ export default function PlatformOverview() {
             <div className={styles.screen}>
               <iframe
                 className={styles.iframe}
-                src="https://www.youtube.com/embed/mHO5_a5eEkM?controls=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+                src="https://www.youtube.com/embed/M-cK1zhDgTk?controls=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
                 title="PO2PAY Platform Overview"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
