@@ -5,9 +5,8 @@ import styles from './Header.module.css'
 const NAV_LINKS = [
   { label: 'InvoiceIQ',  href: '#invoiceiq' },
   { label: 'ContractIQ', href: '#contractiq' },
-  { label: 'ROI',        href: '#roi' },
-  { label: 'Customers',  href: '#case' },
-  { label: 'Resources',  href: '#faq' },
+  { label: 'Integrations', href: '#integrations' },
+  { label: 'FAQ',        href: '#faq' },
 ]
 
 const MEGA_PRODUCTS = [
@@ -155,7 +154,7 @@ export default function Header() {
 
       {/* Right actions */}
       <div className={styles.actions}>
-        <a href="#" className="btn btn-ghost btn-sm">Sign in</a>
+        {/* <a href="#" className="btn btn-ghost btn-sm">Sign in</a> */}
         <a href="#" className="btn btn-primary btn-sm">Book a demo</a>
       </div>
 

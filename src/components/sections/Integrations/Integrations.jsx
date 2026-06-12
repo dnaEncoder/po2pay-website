@@ -1,5 +1,6 @@
 import styles from './Integrations.module.css'
 import favicon from '../../../assets/favicon.png'
+import Reveal from '../../common/Reveal.jsx'
 
 const LEFT_SYSTEMS = [
   { name: 'SAP S/4HANA',   logo: '/sap-logo-png.png' },
@@ -69,60 +70,70 @@ const TALKING_POINTS = [
 
 export default function Integrations() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="integrations">
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className="eyebrow"><span className="dot" />Integrations</div>
-          <h2 className={`h2 ${styles.heading}`}>
-            Connect PO2PAY to the systems your{' '}
-            <span className={styles.accent}>finance team already uses.</span>
-          </h2>
-          <p className={styles.sub}>
-            PO2PAY integrates with ERP platforms and backend systems to move validated financial data smoothly across your workflow.
-          </p>
-        </div>
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className="eyebrow"><span className="dot" />Integrations</div>
+            <h2 className={`h2 ${styles.heading}`}>
+              Connect PO2PAY to the systems your{' '}
+              <span className={styles.accent}>finance team already uses.</span>
+            </h2>
+            <p className={styles.sub}>
+              PO2PAY integrates with ERP platforms and backend systems to move validated financial data smoothly across your workflow.
+            </p>
+          </div>
+        </Reveal>
 
         <div className={styles.diagram}>
-          <div className={`${styles.side} ${styles.sideLeft}`}>
-            <span className={styles.spine} />
-            {LEFT_SYSTEMS.map((sys) => (
-              <div key={sys.name} className={styles.sideCard}>
-                <img src={sys.logo} alt={sys.name} className={styles.sideLogo} />
-              </div>
-            ))}
-          </div>
+          <Reveal variant="left">
+            <div className={`${styles.side} ${styles.sideLeft}`}>
+              <span className={styles.spine} />
+              {LEFT_SYSTEMS.map((sys) => (
+                <div key={sys.name} className={styles.sideCard}>
+                  <img src={sys.logo} alt={sys.name} className={styles.sideLogo} />
+                </div>
+              ))}
+            </div>
+          </Reveal>
 
-          <div className={styles.core}>
-            <div className={styles.coreCard}>
-              <img src={favicon} alt="PO2PAY" className={styles.coreLogo} />
-              <div className={styles.coreName}>PO2PAY</div>
-              <div className={styles.coreTag}>Financial Intelligence Platform</div>
-              <div className={styles.coreBadges}>
-                {CORE_BADGES.map((b) => (
-                  <span key={b} className={styles.coreBadge}>{b}</span>
-                ))}
+          <Reveal variant="scale" delay={150}>
+            <div className={styles.core}>
+              <div className={styles.coreCard}>
+                <img src={favicon} alt="PO2PAY" className={styles.coreLogo} />
+                <div className={styles.coreName}>PO2PAY</div>
+                <div className={styles.coreTag}>Financial Intelligence Platform</div>
+                <div className={styles.coreBadges}>
+                  {CORE_BADGES.map((b) => (
+                    <span key={b} className={styles.coreBadge}>{b}</span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className={`${styles.side} ${styles.sideRight}`}>
-            <span className={styles.spine} />
-            {RIGHT_SYSTEMS.map((sys) => (
-              <div key={sys.name} className={styles.sideCard}>
-                <img src={sys.logo} alt={sys.name} className={styles.sideLogo} />
-              </div>
-            ))}
-          </div>
+          <Reveal variant="right">
+            <div className={`${styles.side} ${styles.sideRight}`}>
+              <span className={styles.spine} />
+              {RIGHT_SYSTEMS.map((sys) => (
+                <div key={sys.name} className={styles.sideCard}>
+                  <img src={sys.logo} alt={sys.name} className={styles.sideLogo} />
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
 
         <div className={styles.points}>
-          {TALKING_POINTS.map((p) => (
-            <div key={p.title} className={styles.point}>
-              <div className={styles.pointIcon}>{p.icon}</div>
-              <div className={styles.pointTitle}>{p.title}</div>
-              <p className={styles.pointDesc}>{p.desc}</p>
-            </div>
+          {TALKING_POINTS.map((p, i) => (
+            <Reveal key={p.title} variant="up" delay={i * 100}>
+              <div className={styles.point}>
+                <div className={styles.pointIcon}>{p.icon}</div>
+                <div className={styles.pointTitle}>{p.title}</div>
+                <p className={styles.pointDesc}>{p.desc}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
 

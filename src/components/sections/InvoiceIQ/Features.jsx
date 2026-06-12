@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import styles from './Features.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -61,11 +62,13 @@ export default function InvoiceIQFeatures() {
   return (
     <section ref={sectionRef} className={styles.section} style={{ '--n': FEATURES.length }}>
 
-      <div className={styles.head}>
-        <div className="eyebrow"><span className="dot" />InvoiceIQ · Features</div>
-        <h2 className={`h2 ${styles.heading}`}>Clearer <em className={styles.accent}>invoice intelligence.</em></h2>
-        <p className={styles.sub}>InvoiceIQ helps you extract, validate, and move invoices faster across your financial operations.</p>
-      </div>
+      <Reveal variant="up">
+        <div className={styles.head}>
+          <div className="eyebrow"><span className="dot" />InvoiceIQ · Features</div>
+          <h2 className={`h2 ${styles.heading}`}>Clearer <em className={styles.accent}>invoice intelligence.</em></h2>
+          <p className={styles.sub}>InvoiceIQ helps you extract, validate, and move invoices faster across your financial operations.</p>
+        </div>
+      </Reveal>
 
       <div className={styles.sticky}>
         <div className={styles.cols}>

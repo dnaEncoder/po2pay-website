@@ -121,9 +121,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(65, 199, 255, 0.07);
-  border: 1px solid rgba(65, 199, 255, 0.28);
-  color: rgba(125, 211, 252, 0.90);
+  background: radial-gradient(circle at 50% 40%, rgba(65, 199, 255, 0.18), rgba(65, 199, 255, 0.05));
+  border: 1px solid rgba(65, 199, 255, 0.35);
+  color: rgba(125, 211, 252, 0.95);
+  box-shadow: 0 0 14px rgba(65, 199, 255, 0.30), inset 0 0 10px rgba(65, 199, 255, 0.10);
+}
+
+.cardIcon svg {
+  filter: drop-shadow(0 0 5px rgba(65, 199, 255, 0.6));
 }
 
 .cardTitle {
@@ -321,6 +326,10 @@
   align-items: center;
   justify-content: center;
   color: rgba(65, 199, 255, 0.85);
+}
+
+.chipIcon svg {
+  filter: drop-shadow(0 0 4px rgba(65, 199, 255, 0.55));
 }
 
 /* ── Assurance strip ────────────────────────────── */

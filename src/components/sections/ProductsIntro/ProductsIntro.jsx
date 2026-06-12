@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import styles from './ProductsIntro.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 const ARROW = (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -156,23 +157,26 @@ export default function ProductsIntro() {
     <section className={styles.section}>
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className="eyebrow eyebrow-dark"><span className="dot" />Two products. One platform.</div>
-          <h2 className={`h2 ${styles.heading}`}>
-            Meet the <span className={styles.accent}>engines</span> behind PO2PAY.
-          </h2>
-          <p className={styles.desc}>
-            InvoiceIQ brings structure to invoice processing. ContractIQ turns contracts and purchase orders into validated financial intelligence&mdash;creating clearer, faster operations.
-          </p>
-          <div className={styles.connector}>
-            <span className={styles.connectorPill}>One platform. End-to-end PO2PAY.</span>
-            <span className={styles.connectorLine} />
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className="eyebrow eyebrow-dark"><span className="dot" />Two products. One platform.</div>
+            <h2 className={`h2 ${styles.heading}`}>
+              Meet the <span className={styles.accent}>engines</span> behind PO2PAY.
+            </h2>
+            <p className={styles.desc}>
+              InvoiceIQ brings structure to invoice processing. ContractIQ turns contracts and purchase orders into validated financial intelligence&mdash;creating clearer, faster operations.
+            </p>
+            <div className={styles.connector}>
+              <span className={styles.connectorPill}>One platform. End-to-end PO2PAY.</span>
+              <span className={styles.connectorLine} />
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         <div className={styles.pair}>
-          {PRODUCTS.map((product) => (
-            <div key={product.id} className={`${styles.card} ${product.accentClass}`}>
+          {PRODUCTS.map((product, i) => (
+            <Reveal key={product.id} variant="up" delay={i * 120}>
+            <div className={`${styles.card} ${product.accentClass}`}>
               <div className={styles.cardLeft}>
                 <div className={`${styles.icon} ${product.id === 'contractiq' ? styles.iconContract : ''}`}>{product.icon}</div>
                 <div className={styles.name}>{product.name}</div>
@@ -205,6 +209,7 @@ export default function ProductsIntro() {
                 </div>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
 

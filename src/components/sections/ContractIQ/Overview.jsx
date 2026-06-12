@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import styles from '../InvoiceIQ/Overview.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -42,21 +43,23 @@ export default function ContractIQOverview() {
     <section ref={sectionRef} className={styles.section} id="contractiq">
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className={styles.left}>
-            <div className="eyebrow"><span className="dot" />ContractIQ · Overview</div>
-            <h2 className={`h2 ${styles.heading}`}>
-              Turn static contracts into <em className={styles.accent}>active financial controls.</em>
-            </h2>
-            <div className={styles.actions}>
-              <a className="btn btn-primary" href="#">Explore ContractIQ →</a>
-              <a className="btn btn-ghost" href="#">See pricing</a>
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className={styles.left}>
+              <div className="eyebrow"><span className="dot" />ContractIQ · Overview</div>
+              <h2 className={`h2 ${styles.heading}`}>
+                Turn static contracts into <em className={styles.accent}>active financial controls.</em>
+              </h2>
+              <div className={styles.actions}>
+                <a className="btn btn-primary" href="#">Explore ContractIQ →</a>
+                <a className="btn btn-ghost" href="#">See pricing</a>
+              </div>
             </div>
+            <p className={styles.desc}>
+              ContractIQ extracts clauses, tracks obligations, and links POs directly to invoices — ensuring every billing event is backed by validated contract data.
+            </p>
           </div>
-          <p className={styles.desc}>
-            ContractIQ extracts clauses, tracks obligations, and links POs directly to invoices — ensuring every billing event is backed by validated contract data.
-          </p>
-        </div>
+        </Reveal>
 
         <div ref={visualRef} className={styles.visual}>
           <div className={styles.blob1} />

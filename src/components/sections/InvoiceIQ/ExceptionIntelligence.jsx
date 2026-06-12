@@ -1,4 +1,5 @@
 import styles from './ExceptionIntelligence.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 const CASES = [
   {
@@ -58,60 +59,64 @@ export default function InvoiceIQExceptionIntelligence() {
       <div className={styles.dark}>
         <div className={styles.container}>
 
-          <div className={styles.head}>
-            <div className={styles.eyebrow}>
-              <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-                <path d="M5 2.5h7l3.5 3.5V17a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-                <path d="M7 11l1.8 1.8L13 8.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              InvoiceIQ Exception Intelligence
-            </div>
-            <h2 className={`h2 ${styles.heading}`}>
-              Exception Intelligence for<br />
-              <span className={styles.accent}>Real-World Invoice Workflows</span>
-            </h2>
-            <p className={styles.sub}>
-              InvoiceIQ detects, classifies, and routes exceptions with confidence&mdash;so your team can focus on what matters.
-            </p>
-          </div>
-
-          <div className={styles.workflow}>
-            <div className={styles.stage}>
-              <div className={styles.stageIcon}>
-                <svg width="26" height="26" viewBox="0 0 22 22" fill="none">
-                  <path d="M6 2.5h7l3.5 3.5V19a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-                  <path d="M13 2.5v3.5h3.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-                  <path d="M7.5 12h5M7.5 15h5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+          <Reveal variant="up">
+            <div className={styles.head}>
+              <div className={styles.eyebrow}>
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 2.5h7l3.5 3.5V17a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+                  <path d="M7 11l1.8 1.8L13 8.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
+                InvoiceIQ Exception Intelligence
               </div>
-              <div className={styles.stageLabel}>Invoice Intake</div>
+              <h2 className={`h2 ${styles.heading}`}>
+                Exception Intelligence for<br />
+                <span className={styles.accent}>Real-World Invoice Workflows</span>
+              </h2>
+              <p className={styles.sub}>
+                InvoiceIQ detects, classifies, and routes exceptions with confidence&mdash;so your team can focus on what matters.
+              </p>
             </div>
+          </Reveal>
 
-            <div className={`${styles.connector} ${styles.connectorLeft}`}>
-              <span className={styles.connLine} />
-              <span className={styles.connArrow}>→</span>
-            </div>
-
-            <div className={styles.stage}>
-              <div className={styles.coreCircle}>IQ</div>
-              <div className={styles.stageLabel}>Detect &bull; Classify &bull; Route</div>
-            </div>
-
-            <div className={`${styles.connector} ${styles.connectorRight}`}>
-              <span className={styles.connLine} />
-              <span className={styles.connArrow}>→</span>
-            </div>
-
-            <div className={styles.stage}>
-              <div className={styles.stageIcon}>
-                <svg width="26" height="26" viewBox="0 0 22 22" fill="none">
-                  <circle cx="11" cy="7.5" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M3.5 19c0-3.6 3.1-6.2 7.5-6.2s7.5 2.6 7.5 6.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
+          <Reveal variant="scale" delay={120}>
+            <div className={styles.workflow}>
+              <div className={styles.stage}>
+                <div className={styles.stageIcon}>
+                  <svg width="26" height="26" viewBox="0 0 22 22" fill="none">
+                    <path d="M6 2.5h7l3.5 3.5V19a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <path d="M13 2.5v3.5h3.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+                    <path d="M7.5 12h5M7.5 15h5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <div className={styles.stageLabel}>Invoice Intake</div>
               </div>
-              <div className={styles.stageLabel}>Review Queue</div>
+
+              <div className={`${styles.connector} ${styles.connectorLeft}`}>
+                <span className={styles.connLine} />
+                <span className={styles.connArrow}>→</span>
+              </div>
+
+              <div className={styles.stage}>
+                <div className={styles.coreCircle}>IQ</div>
+                <div className={styles.stageLabel}>Detect &bull; Classify &bull; Route</div>
+              </div>
+
+              <div className={`${styles.connector} ${styles.connectorRight}`}>
+                <span className={styles.connLine} />
+                <span className={styles.connArrow}>→</span>
+              </div>
+
+              <div className={styles.stage}>
+                <div className={styles.stageIcon}>
+                  <svg width="26" height="26" viewBox="0 0 22 22" fill="none">
+                    <circle cx="11" cy="7.5" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M3.5 19c0-3.6 3.1-6.2 7.5-6.2s7.5 2.6 7.5 6.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <div className={styles.stageLabel}>Review Queue</div>
+              </div>
             </div>
-          </div>
+          </Reveal>
 
         </div>
       </div>
@@ -120,24 +125,28 @@ export default function InvoiceIQExceptionIntelligence() {
         <div className={styles.container}>
 
           <div className={styles.cards}>
-            {CASES.map((c) => (
-              <div key={c.title} className={styles.card}>
-                <div className={styles.cardIcon}>{c.icon}</div>
-                <div className={styles.cardTitle}>{c.title}</div>
-                <p className={styles.cardDesc}>{c.desc}</p>
-              </div>
+            {CASES.map((c, i) => (
+              <Reveal key={c.title} variant="up" delay={i * 100}>
+                <div className={styles.card}>
+                  <div className={styles.cardIcon}>{c.icon}</div>
+                  <div className={styles.cardTitle}>{c.title}</div>
+                  <p className={styles.cardDesc}>{c.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
 
           <div className={styles.outcomeStrip}>
-            {OUTCOMES.map((o) => (
-              <div key={o.title} className={styles.outcomeCol}>
-                <span className={styles.outcomeIcon}>{CHECK_ICON}</span>
-                <div>
-                  <div className={styles.outcomeTitle}>{o.title}</div>
-                  <div className={styles.outcomeDesc}>{o.desc}</div>
+            {OUTCOMES.map((o, i) => (
+              <Reveal key={o.title} variant="up" delay={i * 100}>
+                <div className={styles.outcomeCol}>
+                  <span className={styles.outcomeIcon}>{CHECK_ICON}</span>
+                  <div>
+                    <div className={styles.outcomeTitle}>{o.title}</div>
+                    <div className={styles.outcomeDesc}>{o.desc}</div>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 

@@ -1,4 +1,5 @@
 import styles from './Clients.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 const CLIENTS = [
   { name: 'Aurelia',      style: 'serif'  },
@@ -20,18 +21,22 @@ export default function Clients() {
     <section className={styles.section}>
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className="eyebrow"><span className="dot" />The standard for enterprise</div>
-          <h2 className={`h2 ${styles.heading}`}>
-            Trusted by <span className={styles.accent}>high-volume</span> financial environments.
-          </h2>
-        </div>
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className="eyebrow"><span className="dot" />The standard for enterprise</div>
+            <h2 className={`h2 ${styles.heading}`}>
+              Trusted by <span className={styles.accent}>high-volume</span> financial environments.
+            </h2>
+          </div>
+        </Reveal>
 
         <div className={styles.grid}>
-          {CLIENTS.map((c) => (
-            <div key={c.name} className={`${styles.cell} ${styles[c.style]}`}>
-              {c.name}
-            </div>
+          {CLIENTS.map((c, i) => (
+            <Reveal key={c.name} variant="up" delay={(i % 4) * 80}>
+              <div className={`${styles.cell} ${styles[c.style]}`}>
+                {c.name}
+              </div>
+            </Reveal>
           ))}
         </div>
 

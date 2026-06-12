@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import styles from './ValidationProvenance.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 const STAGES = [
   {
@@ -110,44 +111,48 @@ export default function ContractIQValidationProvenance() {
       <div className={styles.dark}>
         <div className={styles.container}>
 
-          <div className={styles.head}>
-            <div className={styles.eyebrow}>
-              <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-                <path d="M10 2l6.5 2.5v4.2c0 4.3-2.7 7.6-6.5 9.3-3.8-1.7-6.5-5-6.5-9.3V4.5L10 2z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-                <path d="M7.2 10l1.9 1.9 3.7-4.1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              ContractIQ Validation &amp; Provenance
+          <Reveal variant="up">
+            <div className={styles.head}>
+              <div className={styles.eyebrow}>
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 2l6.5 2.5v4.2c0 4.3-2.7 7.6-6.5 9.3-3.8-1.7-6.5-5-6.5-9.3V4.5L10 2z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+                  <path d="M7.2 10l1.9 1.9 3.7-4.1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                ContractIQ Validation &amp; Provenance
+              </div>
+              <h2 className={`h2 ${styles.heading}`}>
+                Every extracted answer,<br />
+                <span className={styles.accent}>fully traceable.</span>
+              </h2>
+              <p className={styles.sub}>
+                ContractIQ validates extracted contract data, links every answer back to its source, and keeps human review in the loop before export.
+              </p>
             </div>
-            <h2 className={`h2 ${styles.heading}`}>
-              Every extracted answer,<br />
-              <span className={styles.accent}>fully traceable.</span>
-            </h2>
-            <p className={styles.sub}>
-              ContractIQ validates extracted contract data, links every answer back to its source, and keeps human review in the loop before export.
-            </p>
-          </div>
+          </Reveal>
 
-          <div className={styles.workflow}>
-            {STAGES.map((s, i) => (
-              <Fragment key={s.key}>
-                <div className={styles.stage}>
-                  {s.core ? (
-                    <div className={styles.coreCircle}>{s.core}</div>
-                  ) : (
-                    <div className={styles.stageIcon}>{s.icon}</div>
-                  )}
-                  <div className={styles.stageLabel}>{s.label}</div>
-                  {s.sub && <div className={styles.stageSub}>{s.sub}</div>}
-                </div>
-                {i < STAGES.length - 1 && (
-                  <div className={styles.connector}>
-                    <span className={styles.connLine} />
-                    <span className={styles.connArrow}>→</span>
+          <Reveal variant="scale" delay={120}>
+            <div className={styles.workflow}>
+              {STAGES.map((s, i) => (
+                <Fragment key={s.key}>
+                  <div className={styles.stage}>
+                    {s.core ? (
+                      <div className={styles.coreCircle}>{s.core}</div>
+                    ) : (
+                      <div className={styles.stageIcon}>{s.icon}</div>
+                    )}
+                    <div className={styles.stageLabel}>{s.label}</div>
+                    {s.sub && <div className={styles.stageSub}>{s.sub}</div>}
                   </div>
-                )}
-              </Fragment>
-            ))}
-          </div>
+                  {i < STAGES.length - 1 && (
+                    <div className={styles.connector}>
+                      <span className={styles.connLine} />
+                      <span className={styles.connArrow}>→</span>
+                    </div>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+          </Reveal>
 
         </div>
       </div>
@@ -156,24 +161,28 @@ export default function ContractIQValidationProvenance() {
         <div className={styles.container}>
 
           <div className={styles.cards}>
-            {CARDS.map((c) => (
-              <div key={c.title} className={styles.card}>
-                <div className={styles.cardIcon}>{c.icon}</div>
-                <div className={styles.cardTitle}>{c.title}</div>
-                <p className={styles.cardDesc}>{c.desc}</p>
-              </div>
+            {CARDS.map((c, i) => (
+              <Reveal key={c.title} variant="up" delay={i * 100}>
+                <div className={styles.card}>
+                  <div className={styles.cardIcon}>{c.icon}</div>
+                  <div className={styles.cardTitle}>{c.title}</div>
+                  <p className={styles.cardDesc}>{c.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
 
           <div className={styles.outcomeStrip}>
-            {OUTCOMES.map((o) => (
-              <div key={o.title} className={styles.outcomeCol}>
-                <span className={styles.outcomeIcon}>{CHECK_ICON}</span>
-                <div>
-                  <div className={styles.outcomeTitle}>{o.title}</div>
-                  <div className={styles.outcomeDesc}>{o.desc}</div>
+            {OUTCOMES.map((o, i) => (
+              <Reveal key={o.title} variant="up" delay={i * 100}>
+                <div className={styles.outcomeCol}>
+                  <span className={styles.outcomeIcon}>{CHECK_ICON}</span>
+                  <div>
+                    <div className={styles.outcomeTitle}>{o.title}</div>
+                    <div className={styles.outcomeDesc}>{o.desc}</div>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 

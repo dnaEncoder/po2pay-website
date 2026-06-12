@@ -36,10 +36,10 @@ export default function Home() {
         <ContractIQOverview />
         <ContractIQFeatures />
         <ContractIQValidation />
-        <PlatformROI />
+        {/* <PlatformROI /> */}
         <Security />
         <Integrations />
-        <Clients />
+        {/* <Clients /> */}
         <CaseStudy />
         <FAQ />
         <FooterCTA />

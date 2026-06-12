@@ -1,10 +1,5 @@
 import styles from './FooterCTA.module.css'
-
-const STATS = [
-  { label: 'Avg. cost reduction', value: '$2.4M' },
-  { label: 'Touchless rate',      value: '99.4%' },
-  { label: 'Cycle time reduction', value: '14×'  },
-]
+import Reveal from '../../common/Reveal.jsx'
 
 export default function FooterCTA() {
   return (
@@ -14,34 +9,28 @@ export default function FooterCTA() {
         <div className={styles.glow} aria-hidden />
         <div className={styles.glow2} aria-hidden />
 
-        <div className={styles.content}>
-          <div className="eyebrow-dark"><span className="dot" />Get started today</div>
+        <Reveal variant="up">
+          <div className={styles.content}>
+            <div className="eyebrow-dark"><span className="dot" />Get started today</div>
 
-          <h2 className={styles.heading}>
-            Stop managing documents.<br />
-            <span className={styles.accent}>Start managing outcomes.</span>
-          </h2>
+            <h2 className={styles.heading}>
+              Stop managing documents.<br />
+              <span className={styles.accent}>Start managing outcomes.</span>
+            </h2>
 
-          <p className={styles.sub}>
-            PO2PAY turns your invoice and contract operations into a connected intelligence layer.
-            Most customers are live within two weeks.
-          </p>
+            <p className={styles.sub}>
+              PO2PAY turns your invoice and contract operations into a connected intelligence layer.
+              Most customers are live within two weeks.
+            </p>
 
-          <div className={styles.actions}>
-            <a href="#" className="btn btn-primary btn-lg">Book a demo</a>
-            <a href="#" className="btn btn-ghost-dark btn-lg">Talk to sales</a>
+            <div className={styles.actions}>
+              <a href="#" className="btn btn-primary btn-lg">Book a demo</a>
+              <a href="#" className="btn btn-ghost-dark btn-lg">Talk to sales</a>
+            </div>
           </div>
+        </Reveal>
 
-          <div className={styles.stats}>
-            {STATS.map(s => (
-              <div key={s.label} className={styles.stat}>
-                <div className={styles.statVal}>{s.value}</div>
-                <div className={styles.statLabel}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
+        <Reveal variant="right" delay={150}>
         <div className={styles.mockup} aria-hidden>
           <div className={styles.mockHeader}>
             <div className={styles.mockDots}>
@@ -88,6 +77,7 @@ export default function FooterCTA() {
             </div>
           </div>
         </div>
+        </Reveal>
 
       </div>
     </section>

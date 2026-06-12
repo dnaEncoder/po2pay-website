@@ -1,5 +1,6 @@
 import styles from './Security.module.css'
 import favicon from '../../../assets/favicon.png'
+import Reveal from '../../common/Reveal.jsx'
 
 const CARDS = [
   {
@@ -124,31 +125,35 @@ export default function Security() {
     <section className={styles.section}>
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className={styles.eyebrow}>
-            <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-              <path d="M10 2.5l6 2.5v4c0 4-2.6 6.8-6 8.5-3.4-1.7-6-4.5-6-8.5V5l6-2.5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-            </svg>
-            Enterprise Security &amp; Data Privacy
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className={styles.eyebrow}>
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2.5l6 2.5v4c0 4-2.6 6.8-6 8.5-3.4-1.7-6-4.5-6-8.5V5l6-2.5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+              </svg>
+              Enterprise Security &amp; Data Privacy
+            </div>
+            <h2 className={`h2 ${styles.heading}`}>
+              Security, privacy, and control —{' '}
+              <span className={styles.accent}>built for enterprise review.</span>
+            </h2>
+            <p className={styles.sub}>
+              PO2PAY is designed for rigorous enterprise security expectations with strong data privacy, access control, auditability, and secure workflow governance.
+            </p>
           </div>
-          <h2 className={`h2 ${styles.heading}`}>
-            Security, privacy, and control —{' '}
-            <span className={styles.accent}>built for enterprise review.</span>
-          </h2>
-          <p className={styles.sub}>
-            PO2PAY is designed for rigorous enterprise security expectations with strong data privacy, access control, auditability, and secure workflow governance.
-          </p>
-        </div>
+        </Reveal>
 
         <div className={styles.diagram}>
-          {CARDS.map((c) => (
-            <div key={c.id} className={styles.card} style={{ gridArea: c.area }}>
-              <div className={styles.cardIcon}>{c.icon}</div>
-              <div>
-                <div className={styles.cardTitle}>{c.title}</div>
-                <div className={styles.cardDesc}>{c.desc}</div>
+          {CARDS.map((c, i) => (
+            <Reveal key={c.id} variant="up" delay={i * 100}>
+              <div className={styles.card} style={{ gridArea: c.area }}>
+                <div className={styles.cardIcon}>{c.icon}</div>
+                <div>
+                  <div className={styles.cardTitle}>{c.title}</div>
+                  <div className={styles.cardDesc}>{c.desc}</div>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
 
           <div className={`${styles.connector} ${styles.connTop}`}><span className={styles.node} /></div>
@@ -156,39 +161,45 @@ export default function Security() {
           <div className={`${styles.connector} ${styles.connLeft}`}><span className={styles.node} /></div>
           <div className={`${styles.connector} ${styles.connRight}`}><span className={styles.node} /></div>
 
-          <div className={styles.core}>
-            <span className={styles.coreRing} />
-            <span className={styles.coreRingOuter} />
-            <div className={styles.shield}>
-              <img src={favicon} alt="PO2PAY" className={styles.shieldLogo} />
+          <Reveal variant="scale" delay={200}>
+            <div className={styles.core}>
+              <span className={styles.coreRing} />
+              <span className={styles.coreRingOuter} />
+              <div className={styles.shield}>
+                <img src={favicon} alt="PO2PAY" className={styles.shieldLogo} />
+              </div>
+              <div className={styles.coreLabel}>
+                <span>PO2PAY</span>
+                <span>Secure Core</span>
+              </div>
             </div>
-            <div className={styles.coreLabel}>
-              <span>PO2PAY</span>
-              <span>Secure Core</span>
-            </div>
-          </div>
+          </Reveal>
         </div>
 
         <div className={styles.chips}>
-          {CHIPS.map((chip) => (
-            <div key={chip.label} className={styles.chip}>
-              <span className={styles.chipIcon}>{chip.icon}</span>
-              {chip.label}
-            </div>
+          {CHIPS.map((chip, i) => (
+            <Reveal key={chip.label} variant="up" delay={i * 60}>
+              <div className={styles.chip}>
+                <span className={styles.chipIcon}>{chip.icon}</span>
+                {chip.label}
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className={styles.assurance}>
-          <span className={styles.assuranceLine} />
-          <span className={styles.assurancePill}>
-            <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-              <path d="M10 2.5l6 2.5v4c0 4-2.6 6.8-6 8.5-3.4-1.7-6-4.5-6-8.5V5l6-2.5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-              <path d="M7.3 9.8l1.9 1.9 3.5-3.9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Built for rigorous enterprise security review requirements
-          </span>
-          <span className={styles.assuranceLine} />
-        </div>
+        <Reveal variant="fade">
+          <div className={styles.assurance}>
+            <span className={styles.assuranceLine} />
+            <span className={styles.assurancePill}>
+              <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2.5l6 2.5v4c0 4-2.6 6.8-6 8.5-3.4-1.7-6-4.5-6-8.5V5l6-2.5z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+                <path d="M7.3 9.8l1.9 1.9 3.5-3.9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Built for rigorous enterprise security review requirements
+            </span>
+            <span className={styles.assuranceLine} />
+          </div>
+        </Reveal>
 
       </div>
     </section>

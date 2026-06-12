@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import styles from '../InvoiceIQ/Features.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -54,11 +55,13 @@ export default function ContractIQFeatures() {
   return (
     <section ref={sectionRef} className={styles.section} style={{ '--n': FEATURES.length }}>
 
-      <div className={styles.head}>
-        <div className="eyebrow"><span className="dot" />ContractIQ · Features</div>
-        <h2 className={`h2 ${styles.heading}`}>The bridge between <em className={styles.accent}>commercial intent and financial execution.</em></h2>
-        <p className={styles.sub}>ContractIQ turns static documents into active operational controls, ensuring your finance team never misses a renewal, a discount, or a billing deviation.</p>
-      </div>
+      <Reveal variant="up">
+        <div className={styles.head}>
+          <div className="eyebrow"><span className="dot" />ContractIQ · Features</div>
+          <h2 className={`h2 ${styles.heading}`}>The bridge between <em className={styles.accent}>commercial intent and financial execution.</em></h2>
+          <p className={styles.sub}>ContractIQ turns static documents into active operational controls, ensuring your finance team never misses a renewal, a discount, or a billing deviation.</p>
+        </div>
+      </Reveal>
 
       <div className={styles.sticky}>
         <div className={styles.cols}>

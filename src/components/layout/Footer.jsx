@@ -10,33 +10,6 @@ const NAV = [
       { label: 'Integrations', href: '#' },
     ],
   },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About',    href: '#' },
-      { label: 'Customers', href: '#' },
-      { label: 'Careers',  href: '#' },
-      { label: 'Blog',     href: '#' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { label: 'Documentation', href: '#' },
-      { label: 'API Reference',  href: '#' },
-      { label: 'Changelog',     href: '#' },
-      { label: 'Status',        href: '#' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Privacy Policy',  href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Security',        href: '#' },
-      { label: 'Cookie Policy',   href: '#' },
-    ],
-  },
 ]
 
 const SOCIALS = [

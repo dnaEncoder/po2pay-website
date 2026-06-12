@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './FAQ.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 const FAQS = [
   {
@@ -36,43 +37,46 @@ export default function FAQ() {
   }
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="faq">
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className="eyebrow"><span className="dot" />FAQ</div>
-          <h2 className={`h2 ${styles.heading}`}>
-            Questions we get asked.
-          </h2>
-          <p className={styles.sub}>
-            Everything you need to evaluate whether PO2PAY is the right fit for your team.
-          </p>
-        </div>
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className="eyebrow"><span className="dot" />FAQ</div>
+            <h2 className={`h2 ${styles.heading}`}>
+              Questions we get asked.
+            </h2>
+            <p className={styles.sub}>
+              Everything you need to evaluate whether PO2PAY is the right fit for your team.
+            </p>
+          </div>
+        </Reveal>
 
         <div className={styles.list}>
           {FAQS.map((faq, i) => (
-            <div
-              key={i}
-              className={`${styles.item} ${open === i ? styles.itemOpen : ''}`}
-            >
-              <button
-                className={styles.trigger}
-                onClick={() => toggle(i)}
-                aria-expanded={open === i}
+            <Reveal key={i} variant="up" delay={i * 60}>
+              <div
+                className={`${styles.item} ${open === i ? styles.itemOpen : ''}`}
               >
-                <span className={styles.q}>{faq.q}</span>
-                <span className={styles.icon} aria-hidden>
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M5 7.5l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-              <div className={styles.answer}>
-                <div className={styles.answerInner}>
-                  <p>{faq.a}</p>
+                <button
+                  className={styles.trigger}
+                  onClick={() => toggle(i)}
+                  aria-expanded={open === i}
+                >
+                  <span className={styles.q}>{faq.q}</span>
+                  <span className={styles.icon} aria-hidden>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M5 7.5l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div className={styles.answer}>
+                  <div className={styles.answerInner}>
+                    <p>{faq.a}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 

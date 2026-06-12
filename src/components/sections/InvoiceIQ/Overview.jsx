@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import styles from './Overview.module.css'
+import Reveal from '../../common/Reveal.jsx'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -46,21 +47,23 @@ export default function InvoiceIQOverview() {
     <section ref={sectionRef} className={styles.section} id="invoiceiq">
       <div className={styles.container}>
 
-        <div className={styles.head}>
-          <div className={styles.left}>
-            <div className="eyebrow"><span className="dot" />InvoiceIQ · Overview</div>
-            <h2 className={`h2 ${styles.heading}`}>
-              Bring control back to <em className={styles.accent}>high-volume</em> invoice operations.
-            </h2>
-            <div className={styles.actions}>
-              <a className="btn btn-primary" href="#">Explore InvoiceIQ →</a>
-              <a className="btn btn-ghost" href="#">See pricing</a>
+        <Reveal variant="up">
+          <div className={styles.head}>
+            <div className={styles.left}>
+              <div className="eyebrow"><span className="dot" />InvoiceIQ · Overview</div>
+              <h2 className={`h2 ${styles.heading}`}>
+                Bring control back to <em className={styles.accent}>high-volume</em> invoice operations.
+              </h2>
+              <div className={styles.actions}>
+                <a className="btn btn-primary" href="#">Explore InvoiceIQ →</a>
+                <a className="btn btn-ghost" href="#">See pricing</a>
+              </div>
             </div>
+            <p className={styles.desc}>
+              InvoiceIQ helps finance teams reduce repetitive handling, improve validation flow, and create better visibility across invoice-heavy environments — without breaking existing systems.
+            </p>
           </div>
-          <p className={styles.desc}>
-            InvoiceIQ helps finance teams reduce repetitive handling, improve validation flow, and create better visibility across invoice-heavy environments — without breaking existing systems.
-          </p>
-        </div>
+        </Reveal>
 
         <div ref={visualRef} className={styles.visual}>
           <div className={styles.blob1} />
