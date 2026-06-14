@@ -328,6 +328,20 @@
   padding-left: 4px;
 }
 
+/* ── Mobile nav drawer backdrop & close ───────────────── */
+
+.navBackdrop {
+  display: none;
+}
+
+.navClose {
+  display: none;
+}
+
+.navLogo {
+  display: none;
+}
+
 /* ── Hamburger (mobile) ───────────────────────────────── */
 
 .hamburger {
@@ -365,29 +379,91 @@
 /* ── Responsive ───────────────────────────────────────── */
 
 @media (max-width: 960px) {
+  /* backdrop-filter on .header creates a containing block for fixed-
+     position descendants, which traps the nav drawer/backdrop inside
+     the header's bounds instead of the viewport. Disable it here. */
+  .header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .inner {
     padding: 10px 16px;
     gap: 16px;
   }
 
   .nav {
-    display: none;
     position: fixed;
-    top: 64px;
-    left: 0;
+    top: 0;
     right: 0;
     bottom: 0;
+    width: min(320px, 82vw);
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
     gap: 4px;
     background: #fff;
-    padding: 20px 20px 40px;
+    padding: 64px 20px 40px;
     overflow-y: auto;
-    border-top: 1px solid var(--c-neutral-100);
+    border-top: none;
+    border-left: 1px solid var(--c-neutral-100);
+    box-shadow: -12px 0 36px rgba(10, 35, 72, 0.12);
+    z-index: var(--z-modal);
+    transform: translateX(100%);
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .navLogo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .navLogo img {
+    height: 26px;
+    width: auto;
   }
 
   .navOpen {
+    transform: translateX(0);
+  }
+
+  .navBackdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 20, 40, 0.45);
+    z-index: var(--z-overlay);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-out);
+  }
+
+  .navBackdropOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navClose {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--c-neutral-100);
+    border: none;
+    color: var(--c-neutral-700);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+
+  .navClose:hover {
+    background: var(--c-neutral-200);
   }
 
   .navItem {

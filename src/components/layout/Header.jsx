@@ -96,6 +96,14 @@ export default function Header() {
     return () => document.removeEventListener('click', close)
   }, [signInOpen])
 
+  // Lock body scroll while mobile nav drawer is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  const closeMobileNav = () => setMobileOpen(false)
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`} id="siteHeader">
       <div className={styles.inner}>
@@ -104,8 +112,27 @@ export default function Header() {
         <img src={logo} alt="PO2PAY" />
       </a>
 
+      {/* Mobile nav backdrop */}
+      <div
+        className={`${styles.navBackdrop} ${mobileOpen ? styles.navBackdropOpen : ''}`}
+        onClick={closeMobileNav}
+        aria-hidden="true"
+      />
+
       {/* Nav */}
       <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ''}`}>
+        {/* Close button (mobile drawer) */}
+        <button className={styles.navClose} onClick={closeMobileNav} aria-label="Close menu">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+        </button>
+
+        {/* Logo (mobile drawer) */}
+        <a href="/" className={styles.navLogo} onClick={closeMobileNav}>
+          <img src={logo} alt="PO2PAY" />
+        </a>
+
         {/* Platform with mega */}
         <div className={styles.megaTriggerWrap}>
           <button
@@ -127,7 +154,7 @@ export default function Header() {
                 <div className={styles.megaCol}>
                   <p className={styles.megaColHead}>Products</p>
                   {MEGA_PRODUCTS.map(item => (
-                    <a key={item.title} href={item.href} className={styles.megaLink}>
+                    <a key={item.title} href={item.href} className={styles.megaLink} onClick={closeMobileNav}>
                       <span className={styles.megaIcon}>{item.icon}</span>
                       <span>
                         <span className={styles.megaLinkTitle}>{item.title}</span>
@@ -141,7 +168,7 @@ export default function Header() {
                 <div className={styles.megaCol}>
                   <p className={styles.megaColHead}>Capabilities</p>
                   {MEGA_CAPABILITIES.map(item => (
-                    <a key={item.title} href="#" className={styles.megaLink}>
+                    <a key={item.title} href="#" className={styles.megaLink} onClick={closeMobileNav}>
                       <span className={styles.megaIcon}>{item.icon}</span>
                       <span>
                         <span className={styles.megaLinkTitle}>{item.title}</span>
@@ -158,7 +185,7 @@ export default function Header() {
                   <p className={styles.megaFeatureDesc}>
                     PO2PAY helps finance teams extract, validate, and operationalize data across invoices, purchase orders, and contracts in one system.
                   </p>
-                  <a href="#" className={styles.megaFeatureLink}>
+                  <a href="#" className={styles.megaFeatureLink} onClick={closeMobileNav}>
                     See how it works
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <path d="M3 6h6m0 0L6 3m3 3L6 9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -172,14 +199,14 @@ export default function Header() {
 
         {/* Regular nav links */}
         {NAV_LINKS.map(link => (
-          <a key={link.label} href={link.href} className={styles.navItem}>{link.label}</a>
+          <a key={link.label} href={link.href} className={styles.navItem} onClick={closeMobileNav}>{link.label}</a>
         ))}
 
         {/* Sign in links (mobile drawer) */}
         <div className={styles.mobileSignIn}>
           <p className={styles.mobileSignInLabel}>Sign in</p>
           {SIGN_IN_LINKS.map(item => (
-            <a key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.signInLink}>
+            <a key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className={styles.signInLink} onClick={closeMobileNav}>
               <span className={styles.megaIcon}>{item.icon}</span>
               <span>
                 <span className={styles.megaLinkTitle}>{item.title}</span>
