@@ -82,6 +82,18 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <span className={styles.copy}>© {new Date().getFullYear()} PO2PAY, Inc. All rights reserved.</span>
+
+          <div className={styles.poweredBy}>
+            <span className={styles.poweredText}>Powered by</span>
+            <a href="https://otsi-global.com/" target="_blank" rel="noopener noreferrer" className={styles.otsiLink} aria-label="OTSI website">
+              <img 
+                src="https://otsi-global.com/wp-content/uploads/2022/02/Final-Logo-Colour-and-Proportion-1.png" 
+                alt="OTSI" 
+                className={styles.otsiLogo} 
+              />
+            </a>
+          </div>
+
           <span className={styles.cert}>SOC 2 Type II · GDPR · CCPA</span>
         </div>
 
