@@ -16,6 +16,7 @@ import PlatformROI     from '../components/sections/PlatformROI/PlatformROI.jsx'
 import Security        from '../components/sections/Security/Security.jsx'
 import Integrations    from '../components/sections/Integrations/Integrations.jsx'
 import Clients         from '../components/sections/Clients/Clients.jsx'
+import PoweredByOTSI   from '../components/sections/PoweredByOTSI/PoweredByOTSI.jsx'
 import CaseStudy       from '../components/sections/CaseStudy/CaseStudy.jsx'
 import FAQ             from '../components/sections/FAQ/FAQ.jsx'
 import FooterCTA       from '../components/sections/FooterCTA/FooterCTA.jsx'
@@ -40,6 +41,7 @@ export default function Home() {
         <Security />
         <Integrations />
         {/* <Clients /> */}
+        <PoweredByOTSI />
         <CaseStudy />
         <FAQ />
         <FooterCTA />
